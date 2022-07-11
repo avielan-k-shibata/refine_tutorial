@@ -5,7 +5,10 @@ import { useTranslation } from "react-i18next";
 
 import { authProvider, axiosInstance } from "./authProvider";
 import { API_URL } from "./constants";
+import 'index.css';
+import { Layout } from "components/Layout";
 
+import { ItemList } from "pages/items";
 function App() {
   const { t, i18n } = useTranslation();
 
@@ -18,9 +21,11 @@ function App() {
   return (
     <Refine
       routerProvider={routerProvider}
-      authProvider={authProvider}
+      // authProvider={authProvider}
       dataProvider={DataProvider(API_URL + `/api`, axiosInstance)}
       i18nProvider={i18nProvider}
+      Layout={Layout}
+      resources={[{ name: "items", list: ItemList}]}
     />
   );
 }
